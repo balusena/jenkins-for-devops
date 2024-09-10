@@ -52,9 +52,9 @@ Enter `My GitHub Credentials`.
 ```
 After saving, the credentials will appear in the **Global Credentials (Unrestricted)** section:
 
-| ID                 | Name                         | Kind                  | Description               |
-|--------------------|------------------------------|-----------------------|---------------------------|
-| `devops_balu_github` | `github_username/******`   | `Username with password` | `My GitHub Credentials`|
+| ID                 | Name                         | Kind                    | Description             |
+|--------------------|------------------------------|-------------------------|-------------------------|
+|`devops_balu_github`| `github_username/******`     | `Username with password`| `My GitHub Credentials` |
 
 These global credentials can be used across Jenkins for any jobs, nodes, or child items without needing to define them separately.
 ```

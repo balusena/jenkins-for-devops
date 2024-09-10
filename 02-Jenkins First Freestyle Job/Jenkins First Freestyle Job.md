@@ -50,18 +50,18 @@ General Section:
 
 Enter a description:
 Build and Run Python Program
-Build Triggers:
 
+Build Triggers:
 Check Build periodically.
+
 Schedule:
 * * * * *
 (This runs the job every minute)
-Build Section:
 
+Build Section:
 Click Add Build Step and select Execute Shell.
+
 Enter the following script:
-bash
-Copy code
 cd /home/ubuntu/pythonprograms
 sudo python3 hello.py
 Click Save to save the job configurations.

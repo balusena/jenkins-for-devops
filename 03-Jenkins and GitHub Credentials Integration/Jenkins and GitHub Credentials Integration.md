@@ -12,17 +12,17 @@ Follow these steps to permanently register your GitHub credentials in Jenkins:
 
 ### Step 1: Log in to the Jenkins Dashboard
 ```
-1. Open your Jenkins dashboard in a web browser (`127.0.0.1:8080`).
+Open your Jenkins dashboard in a web browser (`127.0.0.1:8080`).
 
-2. Log in with your credentials.
+Log in with your credentials.
 ```
 ### Step 2: Add GitHub Credentials
 ```
-1. From the Jenkins Dashboard, navigate to:
+From the Jenkins Dashboard, navigate to:
 
 Dashboard > Manage Jenkins > Security (Credentials) > Stores Scoped to Jenkins (System) > Global Credentials (Unrestricted)
 
-2. Click on Add Credentials.
+Click on Add Credentials.
 ```
 ### Step 3: Fill in the New Credentials Form
 ```
@@ -46,7 +46,7 @@ Enter `My GitHub Credentials`.
 ```
 ### Step 4: Save the Credentials
 ```
-1. Click **Create** or **Save** to register the credentials.
+Click **Create** or **Save** to register the credentials.
 ```
 ## Global Credentials Overview
 ```

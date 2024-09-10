@@ -85,12 +85,12 @@ and this file on the server:
 ```
 ubuntu@balasenapathi:~$ sudo cat /var/lib/jenkins/secrets/initialAdminPassword
 [sudo] password for ubuntu: balasenapathi
-36082e0143594981aa764beaf4a760d3 
+36082e0143594981aa764beaf4a760d3  -------> click on it
 ```
 - **8.Copy the password from either location and paste it below:**
 ```
 Administrator password
-36082e0143594981aa764beaf4a760d3 -----> click on continue
+36082e0143594981aa764beaf4a760d3 
 ```
 ![Jenkins Administrator password](https://github.com/balusena/jenkins-for-devops/blob/main/Jenkins%20Introduction%20and%20Setup/jenkins-config-1.png)
 
@@ -108,7 +108,7 @@ Username: jenbalu
 Password: balu	
 Confirm password: balu	
 Full name: balusena	
-E-mail address: balasena@gmail.com
+E-mail address: balasena@gmail.com  -------> Save and Continue
 ```
 ![Jenkins First Admin User](https://github.com/balusena/jenkins-for-devops/blob/main/Jenkins%20Introduction%20and%20Setup/jenkins-config-4.png)
 
@@ -141,7 +141,7 @@ ubuntu-dsbda@ubuntudsbda-virtual-machine:~$ sudo systemctl status jenkins
    Main PID: 1007 (code=exited, status=143)
      Status: "Jenkins stopped"
 ```
-- - **13.To start the Jenkins-Server:**
+- **13.To start the Jenkins-Server:**
 ```
 ubuntu@balasenapathi:~$ sudo systemctl start jenkins
 ```

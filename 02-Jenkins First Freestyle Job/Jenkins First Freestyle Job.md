@@ -1,5 +1,9 @@
 # Jenkins First Freestyle Project
 
+This project demonstrates how to set up a Jenkins Freestyle job to automate the execution of a Python script (hello.py) 
+located in a local Linux directory. By configuring Jenkins with proper sudo permissions and setting up periodic build 
+triggers, the job runs the script at scheduled intervals, displaying output directly in Jenkins.
+
 ##  1.Creating First Jenkins Job Using `hello.py` (Freestyle Project)
 
 ### Step 1: Configure `sudoers` File

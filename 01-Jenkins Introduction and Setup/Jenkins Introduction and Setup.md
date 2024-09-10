@@ -92,15 +92,15 @@ ubuntu@balasenapathi:~$ sudo cat /var/lib/jenkins/secrets/initialAdminPassword
 Administrator password
 36082e0143594981aa764beaf4a760d3 
 ```
-![Jenkins Administrator password](https://github.com/balusena/jenkins-for-devops/blob/main/Jenkins%20Introduction%20and%20Setup/jenkins-config-1.png)
+![Jenkins Administrator password](https://github.com/balusena/jenkins-for-devops/blob/main/01-Jenkins%20Introduction%20and%20Setup/jenkins-config-1.png)
 
 - **9.Customize Jenkins Plugins extend Jenkins with additional features to support many different needs:**
 ```
 Install suggested plugins  -------> click on it
 ```
-![Jenkins Customize Plugins](https://github.com/balusena/jenkins-for-devops/blob/main/Jenkins%20Introduction%20and%20Setup/jenkins-config-2.png)
+![Jenkins Customize Plugins](hhttps://github.com/balusena/jenkins-for-devops/blob/main/01-Jenkins%20Introduction%20and%20Setup/jenkins-config-2.png)
 
-![Jenkins Getting Started](https://github.com/balusena/jenkins-for-devops/blob/main/Jenkins%20Introduction%20and%20Setup/jenkins-config-3.png)
+![Jenkins Getting Started](https://github.com/balusena/jenkins-for-devops/blob/main/01-Jenkins%20Introduction%20and%20Setup/jenkins-config-3.png)
 
 - **10.Create First Admin User:**
 ```
@@ -110,11 +110,11 @@ Confirm password: balu
 Full name: balusena	
 E-mail address: balasena@gmail.com  -------> Save and Continue
 ```
-![Jenkins First Admin User](https://github.com/balusena/jenkins-for-devops/blob/main/Jenkins%20Introduction%20and%20Setup/jenkins-config-4.png)
+![Jenkins First Admin User](https://github.com/balusena/jenkins-for-devops/blob/main/01-Jenkins%20Introduction%20and%20Setup/jenkins-config-4.png)
 
-![Jenkins Instance Configuration](https://github.com/balusena/jenkins-for-devops/blob/main/Jenkins%20Introduction%20and%20Setup/jenkins-config-5.png)
+![Jenkins Instance Configuration](https://github.com/balusena/jenkins-for-devops/blob/main/01-Jenkins%20Introduction%20and%20Setup/jenkins-config-5.png)
 
-![Jenkins Is Ready ](https://github.com/balusena/jenkins-for-devops/blob/main/Jenkins%20Introduction%20and%20Setup/jenkins-config-6.png)
+![Jenkins Is Ready ](https://github.com/balusena/jenkins-for-devops/blob/main/01-Jenkins%20Introduction%20and%20Setup/jenkins-config-6.png)
 
 - **11.To get the status of Jenkins-Server:**
 ```

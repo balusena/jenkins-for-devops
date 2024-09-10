@@ -91,23 +91,32 @@ ubuntu@balasenapathi:~$ sudo cat /var/lib/jenkins/secrets/initialAdminPassword
 ```
 Administrator password
 36082e0143594981aa764beaf4a760d3 -----> click on continue
+```
+![Jenkins Administrator password](https://github.com/balusena/jenkins-for-devops/blob/main/Jenkins%20Introduction%20and%20Setup/jenkins-config-1.png)
 
-http://127.0.0.1:8080/
-
-Customize Jenkins
-Plugins extend Jenkins with additional features to support many different needs.
-
+- **9.Customize Jenkins Plugins extend Jenkins with additional features to support many different needs:**
+```
 Install suggested plugins  -------> click on it
+```
+![Jenkins Customize Plugins](https://github.com/balusena/jenkins-for-devops/blob/main/Jenkins%20Introduction%20and%20Setup/jenkins-config-2.png)
 
-Create First Admin User
+![Jenkins Getting Started](https://github.com/balusena/jenkins-for-devops/blob/main/Jenkins%20Introduction%20and%20Setup/jenkins-config-3.png)
 
+- ** 10.Create First Admin User:**
+```
 Username: jenbalu
 Password: balu	
 Confirm password: balu	
 Full name: balusena	
 E-mail address: balasena@gmail.com
 ```
-- **9.To get the status of Jenkins-Server:**
+![Jenkins First Admin User](https://github.com/balusena/jenkins-for-devops/blob/main/Jenkins%20Introduction%20and%20Setup/jenkins-config-4.png)
+
+![Jenkins Instance Configuration](https://github.com/balusena/jenkins-for-devops/blob/main/Jenkins%20Introduction%20and%20Setup/jenkins-config-5.png)
+
+![Jenkins Is Ready ](https://github.com/balusena/jenkins-for-devops/blob/main/Jenkins%20Introduction%20and%20Setup/jenkins-config-6.png)
+
+- **10.To get the status of Jenkins-Server:**
 ```
 ubuntu@balasenapathi:~$ sudo systemctl status jenkins
 [sudo] password for ubuntu:balasenapathi 
@@ -121,7 +130,7 @@ ubuntu@balasenapathi:~$ sudo systemctl status jenkins
              └─1007 /usr/bin/java -Djava.awt.headless=true -jar /usr/share/java/jenkins.war --webroot=/var/cache/jenkins/war --
              httpPort=8080
 ```
-- **10.To stop the Jenkins-Server:**
+- **11.To stop the Jenkins-Server:**
 ```
 ubuntu@balasenapathi:~$ sudo systemctl stop jenkins
 ubuntu-dsbda@ubuntudsbda-virtual-machine:~$ sudo systemctl status jenkins
@@ -132,7 +141,7 @@ ubuntu-dsbda@ubuntudsbda-virtual-machine:~$ sudo systemctl status jenkins
    Main PID: 1007 (code=exited, status=143)
      Status: "Jenkins stopped"
 ```
-- - **To start the Jenkins-Server:**
+- - **12.To start the Jenkins-Server:**
 ```
 ubuntu@balasenapathi:~$ sudo systemctl start jenkins
 ```

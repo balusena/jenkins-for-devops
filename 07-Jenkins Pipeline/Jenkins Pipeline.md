@@ -604,8 +604,106 @@ Build with Parameters.
 
 **Note:** Parameters can be applied to all branches used in your Jenkins pipeline.
 
+## 13.Using External Groovy Script
 
+Imagine a scenario where you have multiple pipeline steps—building the front end, running tests, building the backend, 
+creating a Docker image, and pushing the repository. With many stages and extensive logic, your Jenkinsfile can become 
+cluttered. To manage this, you can extract the Groovy scripts into an external file, which helps keep your Jenkinsfile 
+clean and maintainable.
 
+### 1.Groovy Script: `script.groovy`
+
+```
+def buildApp() {
+    echo 'building the application'
+}
+
+def deployApp() {
+    echo 'deploying the application'
+    echo "deploying version ${params.VERSION}"
+}
+
+def testApp() {
+    echo 'testing the application'
+}    
+
+def releaseApp() {
+    echo 'releasing the application'
+}    
+
+return this
+```
+
+### 2.Jenkinsfile: Jenkinsfile
+
+```
+def gv
+
+pipeline {
+    agent any
+    parameters {
+        string(name: 'VERSION', defaultValue: '', description: 'version to deploy on prod')
+        choice(name: 'VERSION', choices: ['1.1.0', '1.2.0', '1.3.0'], description: 'version_choice to use in prod')
+        booleanParam(name: 'executeTests', defaultValue: true, description: 'Skip the Test Stage') // If set to false, it gets skipped
+    }
+    stages {
+        stage('Init') {
+            steps {
+                script {
+                    gv = load "script.groovy"
+                }
+            }
+        }       
+        stage('Build') {
+            steps { 
+                script {
+                    gv.buildApp()
+                }
+            }
+        }   
+        stage('Deploy') {
+            steps {
+                script {
+                    gv.deployApp()
+                }   
+            }
+        }
+        stage('Test') {
+            when {
+                expression {
+                    params.executeTests == true
+                }
+            }
+            steps {
+                script {
+                    gv.testApp()
+                }
+            }
+        }
+        stage('Release') {
+            steps {
+                script {
+                    gv.releaseApp()
+                }
+            }
+        }
+    }
+}
+```
+### 3.Explanation
+- **withCredentials Block:** Used to bind credentials to local environment variables (USER and PWD) for the duration of 
+  the block. This ensures that credentials are only exposed within the specific stage.
+- **usernamePassword Method:** Defines the type of credentials (username and password) and maps them to environment 
+  variables. The credentialsId refers to the ID of the credentials stored in Jenkins.
+
+### 4.Required Plugins
+To use credentials in Jenkins, you need to install the following plugins:
+
+- **Credentials Plugin:** Allows you to store credentials in Jenkins.
+- **Credentials Binding Plugin:** Enables binding of credentials to environment variables for use in build steps.
+
+**Note:** First, create credentials in the Jenkins GUI using the Credentials Plugin. Then, use the Credentials Binding 
+Plugin to bind these credentials to environment variables in your Jenkinsfile.
 
 
 

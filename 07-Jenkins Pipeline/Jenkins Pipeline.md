@@ -691,19 +691,15 @@ pipeline {
 }
 ```
 ### 3.Explanation
-- **withCredentials Block:** Used to bind credentials to local environment variables (USER and PWD) for the duration of 
-  the block. This ensures that credentials are only exposed within the specific stage.
-- **usernamePassword Method:** Defines the type of credentials (username and password) and maps them to environment 
-  variables. The credentialsId refers to the ID of the credentials stored in Jenkins.
+**External Groovy Script (script.groovy):** 
+Contains the Groovy functions for various stages of your pipeline. Each function encapsulates specific logic.
 
-### 4.Required Plugins
-To use credentials in Jenkins, you need to install the following plugins:
+**Jenkinsfile (jenkinsfile):**
+- **Load Script:** The external Groovy script is loaded at the 'Init' stage and assigned to a global variable (gv).
+- **Use Functions:** The functions from the Groovy script are called in different stages using the gv variable.
 
-- **Credentials Plugin:** Allows you to store credentials in Jenkins.
-- **Credentials Binding Plugin:** Enables binding of credentials to environment variables for use in build steps.
-
-**Note:** First, create credentials in the Jenkins GUI using the Credentials Plugin. Then, use the Credentials Binding 
-Plugin to bind these credentials to environment variables in your Jenkinsfile.
+**Note:** By declaring the Groovy script as a global variable (gv), you can call its functions across various stages in 
+the pipeline. This method helps maintain a cleaner Jenkinsfile and makes the pipeline easier to manage and understand.
 
 
 

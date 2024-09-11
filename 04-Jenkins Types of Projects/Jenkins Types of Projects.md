@@ -893,6 +893,220 @@ Releasing
 [Pipeline] End of Pipeline
 Finished: SUCCESS
 ```
+
+## 3.Multibranch Pipeline Project
+
+### 1.To create Multibranch pipeline project with Jenkinsfile present in GitHub repository.
+```
+1.Go to New Item
+
+Enter an item name
+
+[  my-pipeline  ]
+
+Now select Mutlibranch Pipeline
+
+click -------> ok
+
+General?
+Display name?
+
+Description?
+This is for storing DevOps files into git.
+
+Branch Sources?
+GitHub
+
+Credentials?
+github_username/github_password(My Github Credentials)
+
+Repository HTTPS URL?
+https://github.com/balusena/devops_balu_github.git
+
+Behaviours?
+Discover branches?
+Strategy?
+All branches
+
+Discover pull requests from origin?
+Strategy?
+The current pull request revision
+
+Discover pull requests from forks?
+Strategy?
+The current pull request revision
+
+Trust?
+From users with Admin or Write permission
+May not be supported on older versions of GitHub Enterprise. See help button.
+
+Property strategy
+All branches get the same properties
+
+Build Configuration?
+Mode?
+by Jenkinsfile
+Script Path?
+jenkinsfile
+
+Appearance?
+Icon?
+Metadata Folder Icon
+
+Pipeline Libraries
+Sharable libraries available to any Pipeline jobs inside this folder. These libraries will be untrusted, meaning their code runs in the 
+Groovy sandbox.
+
+Click on Save|appply
+
+Click on Scan Repository log
+
+Scan Repository Log
+Started by user balusena
+[Sat Jun 03 02:17:06 IST 2023] Starting branch indexing...
+02:17:07 Connecting to https://api.github.com using balusena/****** (My GitHub Credentials)
+Examining balusena/devops_balu_github
+
+  Checking branches...
+
+  Getting remote branches...
+
+    Checking branch main
+      ‘jenkinsfile’ found
+    Met criteria
+No changes detected: main (still at 185b5bce33d15932939b1c56ef2d123b95ec6173)
+
+  1 branches were processed
+
+  Checking pull-requests...
+
+  Getting remote pull requests...
+
+  0 pull requests were processed
+
+Finished examining balusena/devops_balu_github
+
+[Sat Jun 03 02:17:08 IST 2023] Finished branch indexing. Indexing took 1.8 sec
+Finished: SUCCESS
+
+Click on Build History
+
+Build History of Branches (1)
+Timeline copyright SIMILE - www.code.google.com/p/simile-widgets/
+May 23May 24May 25May 26May 27May 28May 29May 30May 31Jun 1Jun 2Jun 3Jun 4Jun 5Jun 6Jun 7Jun 8Jun 9Jun 10Jun 11Jun 12Jun 13Jun 14
+16hr17hr18hr19hr20hr21hr22hr23hr0hr1hr2hr3hr4hr5hr6hr7hr8hr9hr10hr11hr12hr13hr14hr
+my-pipeline » main #1
+S
+Build
+Time Since
+  ?
+Status
+my-pipeline » main
+#1	1 hr 42 min	stable	
+Console output
+
+Build #1 (3 Jun 2023, 02:10:39)
+Add description
+Branch indexing
+
+	Revision: 185b5bce33d15932939b1c56ef2d123b95ec6173
+Repository: https://github.com/balusena/devops_balu_github.git
+main
+
+Click on console output
+
+Console Output
+
+Branch indexing
+02:10:39 Connecting to https://api.github.com using balusena/****** (My GitHub Credentials)
+Obtained jenkinsfile from 185b5bce33d15932939b1c56ef2d123b95ec6173
+[Pipeline] Start of Pipeline
+[Pipeline] node
+Running on Jenkins in /var/lib/jenkins/workspace/my-pipeline_main
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Declarative: Checkout SCM)
+[Pipeline] checkout
+Selected Git installation does not exist. Using Default
+The recommended git tool is: NONE
+using credential devops_balu_github
+Cloning the remote Git repository
+Cloning with configured refspecs honoured and without tags
+Cloning repository https://github.com/balusena/devops_balu_github.git
+ > git init /var/lib/jenkins/workspace/my-pipeline_main # timeout=10
+Fetching upstream changes from https://github.com/balusena/devops_balu_github.git
+ > git --version # timeout=10
+ > git --version # 'git version 2.25.1'
+using GIT_ASKPASS to set credentials My GitHub Credentials
+ > git fetch --no-tags --force --progress -- https://github.com/balusena/devops_balu_github.git +refs/heads/main:refs/remotes/origin/
+ main # timeout=10
+ > git config remote.origin.url https://github.com/balusena/devops_balu_github.git # timeout=10
+ > git config --add remote.origin.fetch +refs/heads/main:refs/remotes/origin/main # timeout=10
+Avoid second fetch
+Checking out Revision 185b5bce33d15932939b1c56ef2d123b95ec6173 (main)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f 185b5bce33d15932939b1c56ef2d123b95ec6173 # timeout=10
+Commit message: "jenkinsfile commit"
+First time build. Skipping changelog.
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Hello)
+[Pipeline] echo
+Hello World
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Build)
+[Pipeline] echo
+Building
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Deploy)
+[Pipeline] echo
+Deploying
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Test)
+[Pipeline] echo
+Testing
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Release)
+[Pipeline] echo
+Releasing
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] End of Pipeline
+
+Could not update commit status, please check if your scan credentials belong to a member of the organization or a collaborator of the 
+repository and repo:status scope is selected
+
+
+GitHub has been notified of this commit’s build result
+
+Finished: SUCCESS
+```
+
+### 2.GitHub Credentials Scope and Commit Status Update Error in Jenkins
+
+The issue could be related to how the credentials are scoped in Jenkins. **System-scoped credentials** are restricted for
+internal use by Jenkins and may not be accessible to certain jobs or pipelines. In contrast, **global-scoped credentials**
+are accessible to all jobs and pipelines.
+
+My GitHub credentials are set to **system scope** and iam facing an error updating the commit status, it might be due to
+limited access. Switching the credentials to **global scope** should resolve the issue, this allows broader access across
+all Jenkins jobs and pipelines, enabling tasks like updating commit status on the repository.
+
    
    
    

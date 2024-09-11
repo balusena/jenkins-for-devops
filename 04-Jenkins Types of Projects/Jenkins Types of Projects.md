@@ -1107,7 +1107,87 @@ My GitHub credentials are set to **system scope** and iam facing an error updati
 limited access. Switching the credentials to **global scope** should resolve the issue, this allows broader access across
 all Jenkins jobs and pipelines, enabling tasks like updating commit status on the repository.
 
-   
+### 3.Credentials Plugin ===> To store and manage them Globally or Centrally
+
+**Credentials Scope:**
+
+- 1.**System** ===> Only available on jenkins server not for jenkins jobs(not visible for others only for jenkins users)
+
+- 2.**Global** ===> Everywhere accessible by anyone 
+
+**Credential Types:**
+
+- 1.**User name with password**
+- 2.**SSH user name with private key**
+- 3.**Sceret File**
+- 4.**Sceret Text**
+- 5.**X_509 Certificate**
+- 6.**Certificate**
+
+**Note:** New Credentials Types based on plugins
+
+### 1.To create a Global Credential
+```
+Kind [user name with password]
+
+Scope [Global(Jenkins, nodes, items, all child items etc)]
+
+Username [global]
+
+Password [balu]
+
+ID [global] ===> Reference for your credential
+
+Description [my global credentials]
+
+[ok]
+```
+### 2.To create a System Credential
+```
+Kind [user name with password]
+
+Scope [System(Jenkins, nodes only)]
+
+Username [system]
+
+Password [balu]
+
+ID [system] ===> Reference for your credential
+
+Description [my system credentials]
+
+[ok]
+```
+Note: In my project (my-pipeline), I am limiting the credential scope specifically to my multibranch pipeline project.
+
+Generally, credential scopes in Jenkins are either **System** or **Global**, but we have the flexibility to limit the scope to
+a specific project by using a third option called **Folder-scoped credentials**. This feature comes from folders and enables
+us to organize build jobs within folders, allowing more granular control over credential access for individual projects.
+
+### 3.To create a folder Credential
+```
+Kind [user name with password]
+
+Username [my-pipeline]
+
+Password [balu]
+
+ID [my-pipeline] ===> Reference for your credential
+
+Description [my pipeline credentials]
+
+[ok]
+```
+Note: In folder-scoped credentials, there is no "system" scope; these credentials are limited to a specific pipeline.
+
+The main advantage of creating global and system-scoped credentials is that, when working with different teams, we can run
+jobs securely by assigning different credentials to each team. This ensures security and confidentiality across teams working
+on the same project. By doing so, we can prevent the sharing or exposure of credentials between projects.
+
+Note: For GitHub credentials, you can use your username and password as follows:
+- **Username**: `github_username`
+- **Password**: `github_password`
+
    
    
    

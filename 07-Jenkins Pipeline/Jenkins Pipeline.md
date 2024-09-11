@@ -411,6 +411,67 @@ pipeline {
 - **Usage in Stages:** The credentials can be used in different stages of the pipeline, such as in the Deploy stage, where 
     SERVER_CREDENTIALS is referenced to perform actions that require authentication.
 
+## 10.Using Credentials with Wrapper Syntax in Jenkinsfile
+
+### 1.Localizing Credentials to Specific Stages
+
+When you need to use credentials only within a specific build stage, you can use the `withCredentials` method. This approach
+confines the use of credentials to a particular stage, making it more secure and easier to manage.
+
+### 2.Example Jenkinsfile with Wrapper Syntax:
+
+```
+pipeline {
+    agent any
+
+    environment {
+        NEW_VERSION = '1.3.0'
+    }
+
+    stages {
+        stage('Build') {
+            steps {
+                echo 'building the application'
+                
+                // Groovy syntax for using variables
+                echo "building version ${NEW_VERSION} ---> This is written in Groovy syntax where NEW_VERSION is used as a variable"
+                
+                // Ordinary string representation
+                echo 'building version ${NEW_VERSION} ---> This is an ordinary representation where NEW_VERSION is not used as a variable'
+            }
+        }
+        stage('Deploy') {
+            steps {
+                echo 'deploying the application'
+                withCredentials([usernamePassword(credentialsId: 'server-credentials', usernameVariable: 'USER', passwordVariable: 'PWD')]) {
+                    sh "some script ${USER} ${PWD}"
+                }
+            }
+        }
+        stage('Test') {
+            steps {
+                echo 'testing the application'
+            }
+        }
+        stage('Release') {
+            steps {
+                echo 'releasing the application'
+            }
+        }
+    }
+}
+```
+### 3.Explanation:
+- **withCredentials Block:** This block is used to bind credentials to local environment variables (USER and PWD in this case)
+  for the duration of the block. It ensures that credentials are only exposed within the specific stage.
+- **usernamePassword Method:** Defines the type of credentials (username and password) and maps them to environment variables.
+  The credentialsId refers to the ID of the credentials stored in Jenkins.
+
+### 4.Required Plugins
+**To use credentials in Jenkins, you need to install the following plugins:**
+- **Credentials Plugin:** Allows you to store credentials in Jenkins.
+- **Credentials Binding Plugin:** Enables binding of credentials to environment variables for use in build steps.
+
 
 
 

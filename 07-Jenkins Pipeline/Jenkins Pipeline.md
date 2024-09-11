@@ -277,6 +277,66 @@ pipeline {
 - **Environment Variables:** You can use Jenkins environment variables to dynamically control the execution of stages based on branch names or other parameters.
 - **Complex Conditions:** Use Groovy scripts to handle more complex logic and decisions.
 
+## 8.Using Environmental Variables in Jenkinsfile
+
+### 1.What Variables Are Available?
+
+Jenkins provides a range of default environment variables which can be viewed at: [Jenkins Environment Variables]
+(http://127.0.0.1:8080/env-vars.html). These variables are available for shell and batch build steps and can be utilized
+in our Jenkinsfile.
+
+### 2.Defining Custom Environment Variables
+
+In addition to the default variables, you can define your own custom environment variables within the Jenkinsfile. This 
+is done using the `environment` block. Variables defined here are accessible throughout all stages of the pipeline.
+
+**Note:** To use an environment variable in your script, you should use the Groovy syntax with `${}`. For ordinary strings,
+          you can use single quotes `''`.
+
+### 3.Example Jenkinsfile:
+
+```
+pipeline {
+    agent any
+    
+    environment {
+        NEW_VERSION = '1.3.0'
+    }
+
+    stages {
+        stage('Build') {
+            steps {
+                echo 'building the application'
+                
+                // Groovy syntax for using variables
+                echo "building version ${NEW_VERSION} ---> This is written in Groovy syntax where NEW_VERSION is used as a variable"
+                
+                // Ordinary string representation
+                echo 'building version ${NEW_VERSION} ---> This is an ordinary representation where NEW_VERSION is not used as a variable'
+            }
+        }
+        stage('Deploy') {
+            steps {
+                echo 'deploying the application'
+            }
+        }
+        stage('Test') {
+            steps {
+                echo 'testing the application'
+            }
+        }
+        stage('Release') {
+            steps {
+                echo 'releasing the application'
+            }
+        }
+    }
+}
+```
+### 4.Explanation:
+- **Environment Block:** Used to define environment variables that will be available to all stages in the pipeline.
+- **Groovy Syntax:** ${VARIABLE_NAME} is used to reference environment variables within a string in Groovy.
+- **Ordinary String Representation:** 'variable_name' is treated as a regular string without variable interpolation
 
 
 

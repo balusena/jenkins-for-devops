@@ -338,7 +338,78 @@ pipeline {
 - **Groovy Syntax:** ${VARIABLE_NAME} is used to reference environment variables within a string in Groovy.
 - **Ordinary String Representation:** 'variable_name' is treated as a regular string without variable interpolation
 
+## 9.Using Credentials in Jenkinsfile
 
+### 1.Use Case
+
+If you have a stage in your Jenkins pipeline that deploys a newly built application to a development server, you will need
+credentials to connect to the server and perform actions such as copying the build artifact. 
+
+- Here’s how you can use credentials in Jenkinsfile:
+
+1. **Define Credentials in Jenkins GUI:** 
+   - Go to the Jenkins GUI and define your credentials. For example, you might have "My GitHub Credentials" with a username and password.
+   - Assign an ID to these credentials, such as `server-credentials`.
+
+2. **Bind Credentials to Environment Variable:**
+   - Use the `credentials` function to bind these credentials to an environment variable in your Jenkinsfile.
+   - Example: `SERVER_CREDENTIALS = credentials('server-credentials')`.
+
+3. **Install and Use the "Credentials Binding" Plugin:**
+   - Ensure that the "Credentials Binding" plugin is installed. This plugin allows you to use the credentials stored in Jenkins as environment variables.
+
+**Note:** The credential environment variable `SERVER_CREDENTIALS` is globally scoped and can be used across different stages in your pipeline.
+
+### 2.Example Jenkinsfile:
+
+```
+pipeline {
+    agent any
+    
+    environment {
+        NEW_VERSION = '1.3.0'
+        SERVER_CREDENTIALS = credentials('server-credentials')
+    }
+
+    stages {
+        stage('Build') {
+            steps {
+                echo 'building the application'
+                
+                // Groovy syntax for using variables
+                echo "building version ${NEW_VERSION} ---> This is written in Groovy syntax where NEW_VERSION is used as a variable"
+                
+                // Ordinary string representation
+                echo 'building version ${NEW_VERSION} ---> This is an ordinary representation where NEW_VERSION is not used as a variable'
+            }
+        }
+        stage('Deploy') {
+            steps {
+                echo 'deploying the application'
+                
+                // Use the credentials variable
+                echo "deploying with ${SERVER_CREDENTIALS}"
+                sh "${SERVER_CREDENTIALS}"
+            }
+        }
+        stage('Test') {
+            steps {
+                echo 'testing the application'
+            }
+        }
+        stage('Release') {
+            steps {
+                echo 'releasing the application'
+            }
+        }
+    }
+}
+```
+### 3.Explanation:
+- **Environment Block:** Defines global environment variables for the pipeline, including credentials.
+- **Credentials Binding:** SERVER_CREDENTIALS = credentials('server-credentials') binds the credentials to the environment variable.
+- **Usage in Stages:** The credentials can be used in different stages of the pipeline, such as in the Deploy stage, where 
+    SERVER_CREDENTIALS is referenced to perform actions that require authentication.
 
 
 

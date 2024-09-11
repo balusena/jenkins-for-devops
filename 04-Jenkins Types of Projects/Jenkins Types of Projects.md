@@ -78,7 +78,7 @@ Your branch is up to date with 'origin/main'.
 nothing to commit, working tree clean
 ```
 
-#2.Next login into the jenkins dashboard and register GitHub Credentials in Jenkins
+### 2.Next login into the jenkins dashboard and register GitHub Credentials in Jenkins
 
 **Follow these steps to permanently register your GitHub credentials in Jenkins:**
 
@@ -130,7 +130,7 @@ After saving, the credentials will appear in the **Global Credentials (Unrestric
 
 These global credentials can be used across Jenkins for any jobs, nodes, or child items without needing to define them separately.
 ```
-#3.Now create your job in Jenkins by using create new job/new item
+### 3.Now create your job in Jenkins by using create new job/new item
 
 **Follow these steps to create a Freestyle job from your Jenkins Dashboard:**
 

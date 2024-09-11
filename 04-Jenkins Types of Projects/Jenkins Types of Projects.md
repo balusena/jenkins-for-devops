@@ -216,9 +216,501 @@ First time build. Skipping changelog.
 + sudo python3 hello.py
 Hello Balu Welcome to Jenkins
 Finished: SUCCESS   
-```  
-   
-   
+```
+
+## 2.Pipeline Project
+
+**Jenkins Pipeline and Jenkinsfile**
+
+## 1. What is a Pipeline?
+
+A pipeline is a series of automated steps (jobs) that are linked together and executed sequentially, with automatic triggers.
+It is used to streamline processes like continuous integration (CI), continuous delivery (CD), and continuous deployment. 
+Each step in the pipeline corresponds to a stage in the software development lifecycle.
+
+### Example of CI/CD Pipeline:
+
+1. **Continuous Integration**:  
+   Developers commit code, which is then tested and integrated automatically:
+   - Dev Stage → Application Test → Integration Test
+
+2. **Continuous Delivery**:  
+   After code integration, it continues through further testing to ensure readiness for release:
+   - Dev Stage → Application Test → Integration Test → Acceptance Test
+
+3. **Continuous Deployment**:  
+   In this scenario, the code goes all the way to production automatically:
+   - Dev Stage → Application Test → Integration Test → Acceptance Test → Production
+
+## 2. What is Jenkins Pipeline?
+
+A Jenkins Pipeline is a mechanism to define and automate a CI/CD pipeline within Jenkins. It enables the chaining of stages
+(jobs) such as building, deploying, testing, and releasing software. Jenkins Pipeline simplifies automating the entire 
+lifecycle of a project from start to finish, with each stage executing after the previous one is successful. 
+
+### Example of a Jenkins Pipeline Flow:
+
+- **Build** → **Deploy** → **Test** → **Release**
+
+Using a pipeline allows for enhanced flexibility, control, and integration with external tools, making it a popular choice
+for implementing CI/CD practices.
+
+## 3. What is Jenkinsfile?
+
+A Jenkinsfile is a script that defines the Jenkins pipeline "as code." It is written in Groovy, and it describes the stages
+(jobs) to be executed as part of the pipeline. The Jenkinsfile is stored in the version control system, which enables better
+collaboration and traceability. By treating pipelines as code, Jenkinsfile allows for repeatability, versioning, and easier
+maintenance.
+
+### Key Features of Jenkinsfile:
+- **Declarative Syntax**: Easier to write and understand for simpler pipelines.
+- **Scripted Syntax**: Provides greater flexibility and control for advanced pipelines.
+- **Version Control**: The Jenkinsfile can be versioned, tracked, and managed alongside the source code, ensuring consistency in the pipeline.
+
+### Creating a Jenkins pipeline job without using Jenkinsfile.
+
+**Creating Jenkins Pipeline job Helloworld (Pipeline Project) without using Jenkinsfile:**
+
+### Step 1: Start Jenkins
+```
+Now go to the web browser and run url :- 127.0.0.1:8080
+
+Username: jenbalu	
+Password: balu	
+```
+
+### Step 2: Install pipeline plugin
+```
+Go to Manage Jenkins > Manage Plugins > Installed > (Type pipeline in filter search)
+
+If we have installed you will find out in the Available section.
+
+If we dont find then go to Manage Jenkins > Manage Plugins > Avaialbe > (Type pipeline in filter search)
+
+click on > install without restart
+```
+
+### Step 3: Create a new job where we are running a Jenkis job by creating a jenkins file from the script
+```
+Go to New Item
+
+Enter an item name
+
+[  PipelineOne  ]
+
+Now select Pipeline
+
+click -------> ok
+
+Now create your job in jenkins by using create new job/new item
+
+General?
+Description? 
+[This job will build a python pipeline from git and github repository]
+
+Note:-Advanced Project Options in this we can set our project name manually, if not set default pipeline project name will be considered.
+
+Advanced Project Options?
+Display Name?
+[PipelineOne]
+
+If set,the optional display name is shown for the project throughout the Jenkins web GUI.As it is for display purposes only,the display
+name is not required to be unique amongst projects.
+If the display name is not set, the Jenkins web GUI will default to showing the project name.
+
+Pipeline
+
+Here we can create our own Jenkinsfile manually or we can fetch/use the Jenkinsfile from SCM like Git/Github/GitLab/cloud_repository.
+```
+### Step 4: Create or get Jenkinsfile in Pipeline section
+```
+pipeline?
+Definition? -----> we have two options 
+1.Pipeline script ---> Select this for now
+2.Pipeline script from SCM
+                                
+Note: A Jenkinsfile can be written in two types of syntax:-
+1.Declarative structure
+2.Scripted structure
+Both are written with Groovy but have a different structure.
+
+Note: The Scripted structure is old one and Descriptive structure is the new way to represent a Jenkinsfile 
+
+Pipeline?
+Definition?
+Pipeline script?
+script? 
+v Hello World
+
+pipeline {
+    agent any
+
+    stages {
+        stage('Hello') {
+            steps {
+                echo 'Hello World'
+            }
+        }
+    }
+}
+
+[/] Use Groovy Sandbox
+
+Pipeline Syntax
+
+click on [Apply] [Save]
+
+Pipeline PipelineOne
+This job will build a python pipeline from git and github repository.
+
+Stage View
+No data available. This Pipeline has not yet run.
+
+Build Now ===> Click on it
+
+Stage View
+
+Hello
+Average stage times:
+(Average full run time: ~3s)
+300ms
+#1
+May 28
+17:48
+No Changes
+300ms
+Permalinks
+Last build (#1), 1 day 2 hr ago
+Last stable build (#1), 1 day 2 hr ago
+Last successful build (#1), 1 day 2 hr ago
+Last completed build (#1), 1 day 2 hr ago
+
+Note: Now we can able to see the Stage view.
+
+Now go to > Build History   trend v ------> click on it
+
+#1 28 May 2023, 17:48:00 ------> click on it
+
+Build #1 (28 May 2023, 17:48:00)
+Started by user balusena
+
+Console Output --------> click on it
+
+Console Output
+Started by user balusena
+[Pipeline] Start of Pipeline
+[Pipeline] node
+Running on Jenkins in /var/lib/jenkins/workspace/PipelineOne
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Hello) (hide)
+[Pipeline] echo
+Hello World
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] End of Pipeline
+Finished: SUCCESS
+
+Now adding some more stages [Build,Deploy,Test,Release] to the existing PipelineOne project.
+
+Now Go to > Back to Project > Configure > Pipeline
+
+pipeline {
+    agent any
+
+    stages {
+        stage('Hello') {
+            steps {
+                echo 'Hello World'
+            }
+        }
+        stage('Build') {
+            steps {
+                echo 'Building'
+            }
+        }
+        stage('Deploy') {
+            steps {
+                echo 'Deploying'
+            }
+        }
+        stage('Test') {
+            steps {
+                echo 'Testing'
+            }
+        }
+        stage('Release') {
+            steps {
+                echo 'Releasing'
+            }
+        }
+    }
+}
+
+[/] Use Groovy Sandbox
+
+click on [Apply] [Save]
+
+Build Now ===> click on it
+
+Pipeline Python_Pipeline_Project
+This job will build a python pipeline from git and github.
+Edit description
+Disable Project
+Stage View
+Hello	Build	Deploy	Test	Release
+Average stage times:
+(Average full run time: ~19s)
+1s
+842ms
+550ms
+215ms
+255ms
+#2
+May 29
+23:10
+No Changes
+1s
+842ms
+550ms
+215ms
+255ms
+Permalinks
+Last build (#2), 1 min 41 sec ago
+Last stable build (#2), 1 min 41 sec ago
+Last successful build (#2), 1 min 41 sec ago
+Last completed build (#2), 1 min 41 sec ago
+
+Note: Now we can able to see the Stage view.
+
+Build History   trend v ------> click on it
+
+Build #2 (29 May 2023, 23:10:45)
+Add description
+Started by user balusena
+
+Console Output --------> click on it
+
+Console Output
+Started by user balusena
+[Pipeline] Start of Pipeline
+[Pipeline] node
+Running on Jenkins in /var/lib/jenkins/workspace/Python_Pipeline_Project
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Hello)
+[Pipeline] echo
+Hello World
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Build)
+[Pipeline] echo
+Building
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Deploy)
+[Pipeline] echo
+Deploying
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Test)
+[Pipeline] echo
+Testing
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Release)
+[Pipeline] echo
+Releasing
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] End of Pipeline
+Finished: SUCCESS
+```
+**2.Creating Jenkins job by using list.py file present in git and github (Pipeline Project) without using Jenkinsfile:**
+
+### 1.Create a file list.py in github
+```
+ubuntu@balasenapathi:~/devops_balu_github/devops_balu_github$ git status
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	list.py
+
+nothing added to commit but untracked files present (use "git add" to track)
+
+ubuntu@balasenapathi:~/devops_balu_github/devops_balu_github$ git add list.py
+
+ubuntu-dsbda@ubuntudsbda-virtual-machine:~/devops_balu_github/devops_balu_github$ git status
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+	new file:   list.py
+
+ubuntu@balasenapathi:~/devops_balu_github/devops_balu_github$ git commit -m "listpy commit" list.py
+[main 85c2146] listpy commit
+ 1 file changed, 18 insertions(+)
+ create mode 100644 list.py
+
+ubuntu@balasenapathi:~/devops_balu_github/devops_balu_github$ git push -u origin main
+Enumerating objects: 4, done.
+Counting objects: 100% (4/4), done.
+Delta compression using up to 2 threads
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (3/3), 538 bytes | 269.00 KiB/s, done.
+Total 3 (delta 0), reused 0 (delta 0)
+To https://github.com/balusena/devops_balu_github.git
+   b636a13..85c2146  main -> main
+Branch 'main' set up to track remote branch 'main' from 'origin'.
+```
+
+### 2.Now create your job in jenkins by using create new job/new item
+```
+Go to New Item
+
+Enter an item name?
+Python_Pipeline_Project
+
+Now select Pipeline -----> click ok
+
+General?
+Description? 
+This job will build a python pipeline from git and github.
+
+Advanced Project Options?
+
+Pipeline?
+Definition?
+Pipeline script ---> select this option
+script?
+
+pipeline {
+    agent any
+
+    stages {
+        stage('Checkout') {
+            steps {
+                checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[credentialsId:
+                 'devops_balu_github', url: 'https://github.com/balusena/devops_balu_github.git']]])
+            }
+        }
+        stage('Build') {
+            steps {
+                git branch: 'main', credentialsId: 'devops_balu_github', url: 'https://github.com/balusena/devops_balu_github.git'
+                sh 'sudo python3 list.py'
+            }
+        }
+        stage('Test') {
+            steps {
+                echo 'The job has been tested'
+            }
+        }
+    }
+}
+
+
+[/] Use Groovy Sandbox?
+
+Pipeline Syntax
+
+click on Save | Apply 
+
+Build Now ===> Click on it
+
+Now click on #1
+
+Build #1 (27 May 2023, 02:34:17)
+Add description
+Started by user balusena
+
+	Revision: 85c2146e42e3c82d649387072c9fed1773fe0989
+Repository: https://github.com/balusena/devops_balu_github.git
+refs/remotes/origin/main
+
+Console output ===> Click on it
+Console Output
+Started by user balusena
+[Pipeline] Start of Pipeline
+[Pipeline] node
+Running on Jenkins in /var/lib/jenkins/workspace/Python_Pipeline_Project
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Checkout)
+[Pipeline] checkout
+The recommended git tool is: NONE
+using credential devops_balu_github
+Cloning the remote Git repository
+Cloning repository https://github.com/balusena/devops_balu_github.git
+ > git init /var/lib/jenkins/workspace/Python_Pipeline_Project # timeout=10
+Fetching upstream changes from https://github.com/balusena/devops_balu_github.git
+ > git --version # timeout=10
+ > git --version # 'git version 2.25.1'
+using GIT_ASKPASS to set credentials My GitHub Credentials
+ > git fetch --tags --force --progress -- https://github.com/balusena/devops_balu_github.git +refs/heads/*:refs/remotes/origin/* # 
+ timeout=10
+ > git config remote.origin.url https://github.com/balusena/devops_balu_github.git # timeout=10
+ > git config --add remote.origin.fetch +refs/heads/*:refs/remotes/origin/* # timeout=10
+Avoid second fetch
+ > git rev-parse refs/remotes/origin/main^{commit} # timeout=10
+Checking out Revision 85c2146e42e3c82d649387072c9fed1773fe0989 (refs/remotes/origin/main)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f 85c2146e42e3c82d649387072c9fed1773fe0989 # timeout=10
+Commit message: "listpy commit"
+First time build. Skipping changelog.
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Build)
+[Pipeline] git
+The recommended git tool is: NONE
+using credential devops_balu_github
+ > git rev-parse --resolve-git-dir /var/lib/jenkins/workspace/Python_Pipeline_Project/.git # timeout=10
+Fetching changes from the remote Git repository
+ > git config remote.origin.url https://github.com/balusena/devops_balu_github.git # timeout=10
+Fetching upstream changes from https://github.com/balusena/devops_balu_github.git
+ > git --version # timeout=10
+ > git --version # 'git version 2.25.1'
+using GIT_ASKPASS to set credentials My GitHub Credentials
+ > git fetch --tags --force --progress -- https://github.com/balusena/devops_balu_github.git +refs/heads/*:refs/remotes/origin/* # 
+ timeout=10
+ > git rev-parse refs/remotes/origin/main^{commit} # timeout=10
+Checking out Revision 85c2146e42e3c82d649387072c9fed1773fe0989 (refs/remotes/origin/main)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f 85c2146e42e3c82d649387072c9fed1773fe0989 # timeout=10
+ > git branch -a -v --no-abbrev # timeout=10
+ > git checkout -b main 85c2146e42e3c82d649387072c9fed1773fe0989 # timeout=10
+Commit message: "listpy commit"
+[Pipeline] sh
++ sudo python3 list.py
+The reversed list is [10, 1, 6, 3, 9, 8]
+The sorted list is [34, 54, 56, 64, 67, 76, 78, 87, 91, 120, 345]
+List3 = [10, 1, 6, 3, 9, 8]
+The index values are [56, 64, 67, 76]
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Test)
+[Pipeline] echo
+The job has been tested
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] End of Pipeline
+Finished: SUCCESS
+```
+
    
    
    

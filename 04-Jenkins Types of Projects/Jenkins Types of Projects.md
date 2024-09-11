@@ -174,7 +174,7 @@ command [sudo python3 hello.py]
 
 [Save]
 
-Build Now ===> click on it
+Build Now -----> click on it 
 
 Now click on #1
 
@@ -187,7 +187,7 @@ Started by user balusena
 Repository: https://github.com/balusena/devops_balu_github.git
 refs/remotes/origin/main
 
-Console Output ===> Click on it 
+Console Output -----> click on it 
 
 Started by user balusena
 Running as SYSTEM

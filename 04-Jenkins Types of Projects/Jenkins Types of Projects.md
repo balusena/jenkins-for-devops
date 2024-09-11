@@ -546,7 +546,7 @@ nothing added to commit but untracked files present (use "git add" to track)
 
 ubuntu@balasenapathi:~/devops_balu_github/devops_balu_github$ git add list.py
 
-ubuntu-dsbda@ubuntudsbda-virtual-machine:~/devops_balu_github/devops_balu_github$ git status
+ubuntu@balasenapathi:~/devops_balu_github/devops_balu_github$ git status
 On branch main
 Your branch is up to date with 'origin/main'.
 

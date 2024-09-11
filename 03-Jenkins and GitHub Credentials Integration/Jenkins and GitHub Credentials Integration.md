@@ -59,3 +59,4 @@ After saving, the credentials will appear in the **Global Credentials (Unrestric
 These global credentials can be used across Jenkins for any jobs, nodes, or child items without needing to define them separately.
 ```
 
+

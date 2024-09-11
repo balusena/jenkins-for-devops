@@ -220,9 +220,7 @@ Finished: SUCCESS
 
 ## 2.Pipeline Project
 
-**Jenkins Pipeline and Jenkinsfile**
-
-## 1. What is a Pipeline?
+### 1. What is a Pipeline?
 
 A pipeline is a series of automated steps (jobs) that are linked together and executed sequentially, with automatic triggers.
 It is used to streamline processes like continuous integration (CI), continuous delivery (CD), and continuous deployment. 
@@ -242,7 +240,7 @@ Each step in the pipeline corresponds to a stage in the software development lif
    In this scenario, the code goes all the way to production automatically:
    - Dev Stage → Application Test → Integration Test → Acceptance Test → Production
 
-## 2. What is Jenkins Pipeline?
+### 2. What is Jenkins Pipeline?
 
 A Jenkins Pipeline is a mechanism to define and automate a CI/CD pipeline within Jenkins. It enables the chaining of stages
 (jobs) such as building, deploying, testing, and releasing software. Jenkins Pipeline simplifies automating the entire 
@@ -255,7 +253,7 @@ lifecycle of a project from start to finish, with each stage executing after the
 Using a pipeline allows for enhanced flexibility, control, and integration with external tools, making it a popular choice
 for implementing CI/CD practices.
 
-## 3. What is Jenkinsfile?
+### 3. What is Jenkinsfile?
 
 A Jenkinsfile is a script that defines the Jenkins pipeline "as code." It is written in Groovy, and it describes the stages
 (jobs) to be executed as part of the pipeline. The Jenkinsfile is stored in the version control system, which enables better
@@ -267,9 +265,7 @@ maintenance.
 - **Scripted Syntax**: Provides greater flexibility and control for advanced pipelines.
 - **Version Control**: The Jenkinsfile can be versioned, tracked, and managed alongside the source code, ensuring consistency in the pipeline.
 
-### Creating a Jenkins pipeline job without using Jenkinsfile.
-
-**Creating Jenkins Pipeline job Helloworld (Pipeline Project) without using Jenkinsfile:**
+### Creating Jenkins Pipeline job "Helloworld" (Pipeline Project) without using Jenkinsfile:**
 
 ### Step 1: Start Jenkins
 ```
@@ -534,7 +530,7 @@ Releasing
 [Pipeline] End of Pipeline
 Finished: SUCCESS
 ```
-**2.Creating Jenkins job by using list.py file present in git and github (Pipeline Project) without using Jenkinsfile:**
+### 2.Creating Jenkins job by using list.py file present in git and github (Pipeline Project) without using Jenkinsfile
 
 ### 1.Create a file list.py in github
 ```
@@ -711,7 +707,192 @@ The job has been tested
 Finished: SUCCESS
 ```
 
+### 3.How to get Jenkinsfile from Git SCM.
 
+### 1.Now create a jenkinsfile in your local directory and push to your repository (devops_balu_github)
+```
+ubuntu@balasenapathi:~/devops_balu_github/devops_balu_github$ git status
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	jenkinsfile
+
+nothing added to commit but untracked files present (use "git add" to track)
+
+ubuntu@balasenapathi:~/devops_balu_github/devops_balu_github$ git add jenkinsfile
+
+ubuntu@balasenapathi:~/devops_balu_github/devops_balu_github$ git commit -m "jenkinsfile commit" jenkinsfile
+[main 185b5bc] jenkinsfile commit
+ 1 file changed, 31 insertions(+)
+ create mode 100644 jenkinsfile
+
+ubuntu@balasenapathi:~/devops_balu_github/devops_balu_github$ git push -u origin main
+Enumerating objects: 4, done.
+Counting objects: 100% (4/4), done.
+Delta compression using up to 2 threads
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (3/3), 396 bytes | 198.00 KiB/s, done.
+Total 3 (delta 1), reused 0 (delta 0)
+remote: Resolving deltas: 100% (1/1), completed with 1 local object.
+To https://github.com/balusena/devops_balu_github.git
+   85c2146..185b5bc  main -> main
+Branch 'main' set up to track remote branch 'main' from 'origin'.
+```
+### 2.This is the Jenkinsfile file that was pushed to GitHub Repository
+```
+jenkinsfile:
+
+pipeline {
+    agent any
+
+    stages {
+        stage('Hello') {
+            steps {
+                echo 'Hello World'
+            }
+        }
+        stage('Build') {
+            steps {
+                echo 'Building'
+            }
+        }
+        stage('Deploy') {
+            steps {
+                echo 'Deploying'
+            }
+        }
+        stage('Test') {
+            steps {
+                echo 'Testing'
+            }
+        }
+        stage('Release') {
+            steps {
+                echo 'Releasing'
+            }
+        }
+    }
+}
+```
+### 3.Now create your Jenkins Pipeline job by using Jenkinsfile from GitHub.
+```
+Under Jenkins job> Pipeline section > Select Definition > Pipeline script from SCM
+
+Pipeline?
+
+Definition [ Pipeline script from SCM ]
+
+Step 5:- Add repo and Jenkinsfile location in the job under Pipeline section.
+
+SCM?
+Git?
+
+Repositories?
+Repository URL?
+[ https://github.com/balusena/devops_balu_github.git ]
+
+Credentials?
+github_username/github_password(My GitHub Credentials)
+
+Branches to build?
+Branch Specifier (blank for 'any')?
+[*/main]
+
+Repository browser?
+[ Auto ]
+
+Script Path?
+Jenkinsfile
+[/]Lightweight Checkout?
+Pipeline Syntax
+
+Now Apply and Save
+
+Build Now ===> click on it
+
+Build #4 (30 May 2023, 01:50:09)
+Add description
+Changes
+jenkinsfile commit (details / githubweb)
+Started by user balusena
+
+	Revision: 185b5bce33d15932939b1c56ef2d123b95ec6173
+Repository: https://github.com/balusena/devops_balu_github.git
+refs/remotes/origin/main
+
+Console output ===> click on it
+
+Console Output
+Started by user balusena
+Obtained jenkinsfile from git https://github.com/balusena/devops_balu_github.git
+[Pipeline] Start of Pipeline
+[Pipeline] node
+Running on Jenkins in /var/lib/jenkins/workspace/Python_Pipeline_Project
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Declarative: Checkout SCM)
+[Pipeline] checkout
+Selected Git installation does not exist. Using Default
+The recommended git tool is: NONE
+using credential devops_balu_github
+ > git rev-parse --resolve-git-dir /var/lib/jenkins/workspace/Python_Pipeline_Project/.git # timeout=10
+Fetching changes from the remote Git repository
+ > git config remote.origin.url https://github.com/balusena/devops_balu_github.git # timeout=10
+Fetching upstream changes from https://github.com/balusena/devops_balu_github.git
+ > git --version # timeout=10
+ > git --version # 'git version 2.25.1'
+using GIT_ASKPASS to set credentials My GitHub Credentials
+ > git fetch --tags --force --progress -- https://github.com/balusena/devops_balu_github.git +refs/heads/*:refs/remotes/origin/* # 
+ timeout=10
+ > git rev-parse refs/remotes/origin/main^{commit} # timeout=10
+Checking out Revision 185b5bce33d15932939b1c56ef2d123b95ec6173 (refs/remotes/origin/main)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f 185b5bce33d15932939b1c56ef2d123b95ec6173 # timeout=10
+Commit message: "jenkinsfile commit"
+ > git rev-list --no-walk 85c2146e42e3c82d649387072c9fed1773fe0989 # timeout=10
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Hello)
+[Pipeline] echo
+Hello World
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Build)
+[Pipeline] echo
+Building
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Deploy)
+[Pipeline] echo
+Deploying
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Test)
+[Pipeline] echo
+Testing
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Release)
+[Pipeline] echo
+Releasing
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] End of Pipeline
+Finished: SUCCESS
+```
    
    
    

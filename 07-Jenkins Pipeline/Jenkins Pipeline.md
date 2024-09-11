@@ -472,6 +472,66 @@ pipeline {
 - **Credentials Plugin:** Allows you to store credentials in Jenkins.
 - **Credentials Binding Plugin:** Enables binding of credentials to environment variables for use in build steps.
 
+## 11.Using Tools Attribute for Making Build Tools Available
+
+The `tools` attribute in a Jenkinsfile provides access to build tools necessary for your project. For example, if you have
+frontend and backend tools such as Maven, Gradle, and JDK for Java projects, or npm and Yarn for JavaScript projects, you 
+need these tools available in Jenkins.
+
+**Supported Build Tools:**
+- **Gradle**
+- **Maven**
+- **JDK**
+
+If you need other build tools, you must install and configure them according to the required versions for your project.
+
+**Note:** You use these tools in your Jenkinsfile by specifying their names as configured in Jenkins.
+
+### 1.Example Jenkinsfile
+
+```
+pipeline {
+    agent any
+    
+    tools {
+        maven 'Maven'
+        gradle 'Gradle'
+        jdk 'JDK'
+    }
+
+    stages {
+        stage('Build') {
+            steps {
+                echo 'Building the application'
+                sh "mvn install"
+            }
+        }
+        stage('Deploy') {
+            steps {
+                echo 'Deploying the application'
+            }
+        }
+        stage('Test') {
+            steps {
+                echo 'Testing the application'
+            }
+        }
+        stage('Release') {
+            steps {
+                echo 'Releasing the application'
+            }
+        }
+    }
+}
+```
+**Note:** Ensure that the tools are pre-installed in Jenkins.
+
+### 2.To check:
+- Go to Manage Jenkins.
+- Click on Global Tool Configuration.
+- Verify the installation of the required tools.
+
+Use the name of the tool installation in Jenkins and reference it in the Jenkinsfile.
 
 
 

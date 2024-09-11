@@ -533,6 +533,76 @@ pipeline {
 
 Use the name of the tool installation in Jenkins and reference it in the Jenkinsfile.
 
+## 12.Using Parameters for a Parameterized Build
+
+Parameters in Jenkins allow you to provide external configurations to your build process. This is useful for scenarios 
+where you need to change the behavior of your build, such as deploying a specific version of an application to a staging
+server.
+
+### 1.Types of Parameters
+
+- **string(name, defaultValue, description)**: Allows users to input a string value.
+- **choice(name, choices, description)**: Provides a dropdown list of options for the user to select from.
+- **booleanParam(name, defaultValue, description)**: Provides a checkbox for users to select true or false, useful for conditional steps.
+
+### 2.Example Jenkinsfile
+
+```
+pipeline {
+    agent any
+    
+    parameters {
+        string(name: 'VERSION', defaultValue: '', description: 'Version to deploy on prod')
+        choice(name: 'VERSION', choices: ['1.1.0', '1.2.0', '1.3.0'], description: 'Version choice to use in prod')
+        booleanParam(name: 'executeTests', defaultValue: true, description: 'Skip the Test Stage')  // If false, tests are skipped
+    }
+
+    stages {
+        stage('Build') {
+            steps {
+                echo 'Building the application'
+                sh "mvn install"
+            }
+        }
+        stage('Deploy') {
+            steps {
+                echo 'Deploying the application'
+                echo "Deploying version ${params.VERSION}"
+            }
+        }
+        stage('Test') {
+            when {
+                expression {
+                    params.executeTests == true
+                }
+            }
+            steps {
+                echo 'Testing the application'
+            }
+        }
+        stage('Release') {
+            steps {
+                echo 'Releasing the application'
+            }
+        }
+    }
+}
+```
+### 3.Usage:
+After saving and committing the Jenkinsfile, go to your pipeline job and click on Build Now. You will see the option to 
+Build with Parameters.
+
+- Select the VERSION from the dropdown list.
+- Check or uncheck the executeTests checkbox to determine if tests should be run.
+- Click on Build to start the pipeline with the specified parameters.
+
+### 4.Dashboard Navigation:
+
+- Go to my-pipeline.
+- Select main branch.
+- Click Build with Parameters.
+
+**Note:** Parameters can be applied to all branches used in your Jenkins pipeline.
 
 
 

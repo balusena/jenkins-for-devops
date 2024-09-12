@@ -60,3 +60,24 @@ These global credentials can be used across Jenkins for any jobs, nodes, or chil
 ```
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

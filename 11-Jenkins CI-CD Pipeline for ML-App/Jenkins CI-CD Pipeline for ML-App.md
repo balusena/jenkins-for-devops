@@ -663,5 +663,32 @@ contains:Image | Last pushed: 2 years ago               Public
 ```
 **Note:** Docker images are automatically pushed to DockerHub using Jenkins CI/CD pipeline configuration.
 
-
+## 11.Running the money autenticator app using docker
+```
+ubuntu@balasenapathi:~$ docker run -p 5000:5000 money_api:latest
+ * Serving Flask app 'flask_api' (lazy loading)
+ * Environment: production
+   WARNING: This is a development server. Do not use it in a production deployment.
+   Use a production WSGI server instead.
+ * Debug mode: off
+/usr/local/lib/python3.8/site-packages/sklearn/base.py:310: UserWarning: Trying to unpickle estimator DecisionTreeClassifier from 
+version 1.2.2 when using version 0.24.2. This might lead to breaking code or invalid results. Use at your own risk.
+  warnings.warn(
+/usr/local/lib/python3.8/site-packages/sklearn/base.py:310: UserWarning: Trying to unpickle estimator RandomForestClassifier from 
+version 1.2.2 when using version 0.24.2. This might lead to breaking code or invalid results. Use at your own risk.
+  warnings.warn(
+ * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+ * Running on http://172.17.0.2:5000/ (Press CTRL+C to quit)
+172.17.0.1 - - [10/Jun/2023 14:48:54] "GET / HTTP/1.1" 200 -
+172.17.0.1 - - [10/Jun/2023 14:48:58] "GET /favicon.ico HTTP/1.1" 404 -
+172.17.0.1 - - [10/Jun/2023 14:49:05] "GET /apidocs/ HTTP/1.1" 200 -
+172.17.0.1 - - [10/Jun/2023 14:49:06] "GET /flasgger_static/swagger-ui.css HTTP/1.1" 200 -
+172.17.0.1 - - [10/Jun/2023 14:49:06] "GET /flasgger_static/swagger-ui-bundle.js HTTP/1.1" 200 -
+172.17.0.1 - - [10/Jun/2023 14:49:06] "GET /flasgger_static/swagger-ui-standalone-preset.js HTTP/1.1" 200 -
+172.17.0.1 - - [10/Jun/2023 14:49:06] "GET /flasgger_static/lib/jquery.min.js HTTP/1.1" 200 -
+172.17.0.1 - - [10/Jun/2023 14:49:07] "GET /apispec_1.json HTTP/1.1" 200 -
+172.17.0.1 - - [10/Jun/2023 14:49:08] "GET /flasgger_static/favicon-32x32.png HTTP/1.1" 200 -
+172.17.0.1 - - [10/Jun/2023 14:49:53] "GET /predict?variance=2&skewness=4&curtosis=2&entropy=1 HTTP/1.1" 200 -
+```
 

@@ -174,7 +174,6 @@ Developer
                                    ---------------------------> Jenkins Webhook URL 
                                              PUSHES TO       
 ```
-**Note**: Use the actual Jenkins server URL in the Payload URL, not a localhost address.
 
 ### 6.Polling for Changes
 
@@ -650,7 +649,7 @@ DockerHub Credentials: login
 
 username: docker_username
 
-password ---> docker_password
+password: docker_password
 
 balusena                                                Repository	
 

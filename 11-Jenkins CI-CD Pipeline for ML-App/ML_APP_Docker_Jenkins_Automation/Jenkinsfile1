@@ -1,0 +1,31 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Checkout') {
+            steps {
+                checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[credentialsId:
+                 'devops_balu_github', url: 'https://github.com/balusena/devops_balu_github.git']]])
+            }
+        }
+        stage('Build') {
+            steps {
+                dir('ML_APP_Docker_Jenkins_Automation') {
+                    git branch: 'main', credentialsId: 'devops_balu_github', url: 'https://github.com/balusena/devops_balu_github.git'
+                    sh 'docker build -t money_api:latest .'
+                }
+            }
+        }
+        stage('Push to Docker Hub') {
+            steps {
+                withCredentials([
+                    usernamePassword(credentialsId: 'balusena_dockerhub', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD')
+                ]) {
+                    sh "docker login -u ${DOCKER_USERNAME} -p ${DOCKER_PASSWORD}"
+                    sh 'docker tag money_api:latest balusena/money_api:latest'
+                    sh 'docker push balusena/money_api:latest'
+                }
+            }
+        }
+    }
+}

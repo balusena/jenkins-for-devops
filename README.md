@@ -1,2 +1,5 @@
 # Jenkins For DevOps
-This repository covers the complete Jenkins fundamentals along with examples required for a DevOps Engineer.
+
+![Jenkins](https://github.com/balusena/jenkins-for-devops/blob/main/jenkins.png)
+
+

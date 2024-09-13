@@ -53,5 +53,18 @@
     - **Step 6: Deleting the Jenkins Job**
 
 
+## 3.Jenkins and Git Credential Integration
+
+1. **Register GitHub Credentials in Jenkins**
+    - **Step 1: Log in to the Jenkins Dashboard**
+    - **Step 2: Add GitHub Credentials**
+    - **Step 3: Fill in the New Credentials Form**
+    - **Step 4: Save the Credentials**
+
+2.**Global Credentials Overview**
+
+
+
+
 
 

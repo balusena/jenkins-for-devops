@@ -303,6 +303,47 @@
            - **Use Functions** 
 
 
+## 8.Jenkins Shared Library
+
+1. **Shared Library in Jenkins|Re-Usability in jenkins pipeline(Beginners)**
+    - **Why we need Jenkins Shared Library?**
+    - **Example**
+    - **Folder structure for shared library**
+       - **`vars`**
+       - **`src`**
+       - **`resources`**
+    - **Scenario:**
+    - **Demo: Create a repo called shared-library in SCM(GitHub)**
+    - **create a groovy script named "filterLogs.groovy" in vars folder ===> shared-library/vars/filterLogs.groovy**
+    - **Global Pipeline Libraries configuration for shared-library setup**
+    - **Create a jenkinsfile**
+    - **Run the Pipeline**
+    - **Use Case**
+
+2. **Shared Library in Jenkins|Re-Usability in jenkins pipeline(Advanced)**
+    - **Agenda**
+       - **Jenkins Shared Library**
+       - **Closures**
+       - **Maven Build**
+       - **Maven Deploy**
+    - **Folder Structure**
+       - **vars directory**
+       - **src directory** 
+       - **resources directory** 
+       - **Jenkinsfile** 
+       - **The pipeline has three stages**
+          - **Greeting**
+          - **StringUtils**
+          - **Resource File**
+    - **Directory Structure**
+       - **vars/greeting.groovy** 
+       - **src/com/example/utils/StringUtils.groovy**
+       - **resources/config.properties: Create a File**
+       - **Jenkinsfile: Create a Groovy Script**
+
+
+
+
 
 
 

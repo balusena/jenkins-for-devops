@@ -169,6 +169,39 @@
        - **Steps to Restart from a Stage**
 
 
+## 6.Jenkins Automatic Build Triggers
+
+1. **Trigger Jenkins Build Automatically: (Git Integration)**
+
+2. **Jenkins and GitHub Integration Workflow**
+
+3. **Trigger Methods**
+    - **Push Notification**
+    - **Polling for Changes**
+
+4. **Push Notification (Using Webhooks)**
+    - **Jenkins Setup for GitHub Push Notifications**
+       - **Install Jenkins Plugin**
+       - **Configure Repository Server Hostname**
+       - **Access Token or Credentials**
+    - **Jenkins Configuration for GitHub Webhooks**
+    - **GitHub Setup for Webhook URL**
+
+5. **Polling for Changes**
+    - **Jenkins Polling Setup**
+    - **Example of Polling Workflow**
+
+6. **Common Practice and Backup Strategy**
+    - **Good Strategy**
+
+7. **What is the Difference Between Webhooks and Polling in Jenkins?**
+
+
+
+
+
+
+
 
 
 

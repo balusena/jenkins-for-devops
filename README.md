@@ -197,6 +197,113 @@
 7. **What is the Difference Between Webhooks and Polling in Jenkins?**
 
 
+## 7.Jenkins Pipeline
+
+1. **What is Jenkinsfile?**
+
+2. **Key Features of Jenkinsfile**
+    - **Declarative Syntax**
+    - **Scripted Syntax**
+    - **Version Control**
+
+3. **From Scripted to Declarative Pipeline Syntax**
+
+4. **Basic Structure of Jenkinsfile**
+    - **Pipeline Syntax**
+    - **Scripted Pipeline vs. Declarative Pipeline**
+       - **Scripted Pipeline Example**
+       - **Declarative Pipeline Example**
+
+5. **Required fields of Jenkinsfile**
+    - **pipeline**
+    - **agent** 
+    - **stages** 
+    - **stage**
+    - **Build a Multibranch Pipeline in Jenkins with GitHub Integration**
+
+6. **Post Attribute in Jenkinsfile**
+    - **Purpose**
+       - **Post** 
+    - **Conditions in the Post Section**
+       - **always**
+       - **success**
+       - **failure**
+    - **Example Jenkinsfile with Post Section**
+
+7. **Define Conditionals/When Expression**
+    - **Use Case** 
+    - **Conditional Execution with `when**
+       - **Expression** 
+       - **Groovy Script** 
+    - **Example Jenkinsfile**
+       - **Explanation**
+          - **when` Directive**
+          - **Expression Example** 
+          - **Groovy Script** 
+          - **Environment Variables** 
+          - **Complex Conditions** 
+
+8. **Using Environmental Variables in Jenkinsfile**
+    - **What Variables Are Available?**
+    - **Defining Custom Environment Variables**
+    - **Example Jenkinsfile**
+       - **Explanation**
+          - **Environment Block** 
+          - **Groovy Syntax** 
+          - **Ordinary String Representation** 
+
+9. **Using Credentials in Jenkinsfile**
+    - **Use Case**
+       - **Define Credentials in Jenkins GUI** 
+       - **Bind Credentials to Environment Variable**
+       - **Install and Use the "Credentials Binding" Plugin**
+    - **Example Jenkinsfile**
+       - **Explanation**
+          - **Environment Block**
+          - **Credentials Binding** 
+          - **Usage in Stages** 
+
+10. **Using Credentials with Wrapper Syntax in Jenkinsfile**
+     - **Localizing Credentials to Specific Stages**
+     - **Example Jenkinsfile with Wrapper Syntax**
+        - **Explanation**
+           - **withCredentials Block**
+           - **usernamePassword Method** 
+     - **Required Plugins**
+        - **Credentials Plugin**
+        - **Credentials Binding Plugin** 
+
+11. **Using Tools Attribute for Making Build Tools Available**
+     - **Supported Build Tools**
+        - **Gradle**
+        - **Maven**
+        - **JDK**
+     - **Example Jenkinsfile**
+     - **To check**
+        - **Go to Manage Jenkins**
+        - **Click on Global Tool Configuration**
+        - **Verify the installation of the required tools**
+
+12. **Using Parameters for a Parameterized Build**
+     - **Types of Parameters**
+        - **string**
+        - **choice**
+        - **booleanParam**
+     - **Example Jenkinsfile**
+     - **Usage**
+     - **Dashboard Navigation**
+
+13. **Using External Groovy Script**
+     - **Groovy Script: `script.groovy`**
+     - **Jenkinsfile: Jenkinsfile**
+     - **Explanation**
+        - **External Groovy Script (script.groovy)** 
+        - **Jenkinsfile (jenkinsfile)**
+           - **Load Script** 
+           - **Use Functions** 
+
+
+
 
 
 

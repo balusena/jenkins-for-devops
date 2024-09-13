@@ -357,6 +357,12 @@
 3. **Jenkins Pipeline Example for Email Notifications**
 
 
+## 10.Jenkins and Docker Integration
+
+1. **DockerHub credentials configured in Jenkins: First register your DockerHub credentials in jenkins permanently**
+
+2. **Global Credentials(Unrestricted)**
+
 
 
 

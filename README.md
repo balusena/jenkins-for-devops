@@ -64,6 +64,81 @@
 2.**Global Credentials Overview**
 
 
+## 4.Jenkins Types of Projects
+
+1. **Freestyle Project** 
+    - **Creating a freestyle Jenkins project by using hello.py file present in git and github(Freestyle Project)**
+       - **First push the code [hello.py] into the github repository**
+       - **Next login into the jenkins dashboard and register GitHub Credentials in Jenkins**
+          - **Follow these steps to permanently register your GitHub credentials in Jenkins**
+             - **Step 1: Log in to the Jenkins Dashboard**
+             - **Step 2: Add GitHub Credentials**
+             - **Step 3: Fill in the New Credentials Form**
+             - **Step 4: Save the Credentials**
+             - **Global Credentials Overview**
+       - **Now create your job in Jenkins by using create new job/new item**
+          - **Follow these steps to create a Freestyle job from your Jenkins Dashboard**
+
+2. **Pipeline Project**
+
+1. **What is a Pipeline?**
+
+2. **Example of CI/CD Pipeline**
+    - **Continuous Integration**
+    - **Continuous Delivery**
+    - **Continuous Deployment**
+
+3. **What is Jenkins Pipeline?**
+    - **Example of a Jenkins Pipeline Flow**
+
+4. **What is Jenkinsfile?**
+    - **Key Features of Jenkinsfile**
+       - **Declarative Syntax**
+       - **Scripted Syntax**
+       - **Version Control**
+
+5. **Creating Jenkins Pipeline job "Helloworld" (Pipeline Project) without using Jenkinsfile**
+    - **Step 1: Start Jenkins**
+    - **Step 2: Install pipeline plugin**
+    - **Step 3: Create a new job where we are running a Jenkis job by creating a jenkins file from the script**
+    - **Step 4: Create or get Jenkinsfile in Pipeline section**
+
+6. **Creating Jenkins job by using list.py file present in git and github (Pipeline Project) without using Jenkinsfile**
+    - **Create a file list.py in github**
+    - **Now create your job in jenkins by using create new job/new item**
+    - **How to get Jenkinsfile from Git SCM**
+       - **Now create a jenkinsfile in your local directory and push to your repository (devops_balu_github)**
+       - **This is the Jenkinsfile file that was pushed to GitHub Repository**
+       - **Now create your Jenkins Pipeline job by using Jenkinsfile from GitHub**
+    - **Step 5: Add repo and Jenkinsfile location in the job under Pipeline section**
+
+3. **Multibranch Pipeline Project**
+    - **To create Multibranch pipeline project with Jenkinsfile present in GitHub repository**
+
+## 5.GitHub Credentials Scope and Commit Status Update Error in Jenkins
+
+## 6.Credentials Plugin ===> To store and manage them Globally or Centrally
+
+1. **Credentials Scope**
+    - 1.**System**
+    - 2.**Global** 
+
+2. **Credential Types**
+    - **User name with password**
+    - **SSH user name with private key**
+    - **Sceret File**
+    - **Sceret Text**
+    - **X_509 Certificate**
+    - **Certificate**
+
+3. **To create a Global Credential**
+
+4. **To create a System Credential**
+
+5. **To create a folder Credential**
+
+
+
 
 
 

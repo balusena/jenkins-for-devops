@@ -417,6 +417,18 @@
 
 11. **Running the money authenticator app using docker**
 
+## Liking the Project?
+
+# ⭐❤️
+
+If you find this project helpful, please consider giving it a ⭐! It helps others discover the project and keeps me motivated to improve it.
+
+Thank you for your support!
+
+---
+Made with ❤️ and passion to contribute to the DevOps community by [Bala Senapathi](https://github.com/balusena)
+
+
 
 
 

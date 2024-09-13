@@ -342,6 +342,19 @@
        - **Jenkinsfile: Create a Groovy Script**
 
 
+## 9.Jenkins Email Notification Setup
+
+1. **Prerequisites**
+    - **Jenkins Email Extension Plugin** 
+    - **SMTP Server Configuration**
+
+2. **Step-by-Step Guide**
+    - **Configure SMTP in Jenkins**
+    - **Test Email**
+    - **Set Up Email Notification for a Specific Job**
+    - **Save**: Click save to apply the job configuration**
+
+3. **Jenkins Pipeline Example for Email Notifications**
 
 
 

@@ -1,7 +1,6 @@
 # Jenkins For DevOps
 
 ![Jenkins](https://github.com/balusena/jenkins-for-devops/blob/main/jenkins.png)
-
 ## 1.Introduction to Jenkins
 
 ## 2.Jenkins Features

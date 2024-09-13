@@ -364,6 +364,60 @@
 2. **Global Credentials(Unrestricted)**
 
 
+## 11.Jenkins CI-CD Pipeline for ML-App (Money Authentication)
+
+1. **Tools Overview**
+    - **Linux**
+    - **GitHub**
+    - **Jenkins**
+    - **Docker**
+
+2. **ML-App Project folder structure**
+    - **ML_APP_Docker_Jenkins_Automation**
+       - **BankNote_Authentication.csv**        
+       - **Dockerfile**                        
+       - **Jenkinsfile**                       
+       - **ModelTraining.ipynb**                
+       - **TestFile.csv**                       
+       - **classifier.pkl**                     
+       - **flask_api.py**                       
+       - **requirements.txt**                   
+
+3. **GitHub credentials configured in Jenkins: First register your github credentials in jenkins permanently**
+
+4. **Trigger Jenkins Build Automatically: (Git Integration)**
+    - **Jenkins and GitHub Integration Workflow**
+    - **Trigger Methods**
+       - **Push Notification**
+          - **Push Notification (Using Webhooks)**
+             - **Jenkins Setup for GitHub Push Notifications**
+                - **Install Jenkins Plugin**
+                - **Configure Repository Server Hostname**
+                - **Access Token or Credentials**
+    - **Jenkins Configuration for GitHub Webhooks**
+       - **Jenkins side connection with SCM(GitHub)**
+    - **SCM(GitHub) side connection with Jenkins-webhook URL**
+       - **Note** 
+       - **Caution** 
+          - **Polling for Changes**
+             - **Jenkins Polling Setup**
+
+5. **DockerHub credentials configured in Jenkins: First register your DockerHub credentials in jenkins permanently**
+    - **Global Credentials(Unrestricted)**
+
+6. **Push all the files present in devops_balu_github into github repository**
+
+7. **Create a Jenkins Pipeline job using Jenkinsfile**
+
+8. **Now click on Build in your Jenkins Dashboard**
+
+9. **To get the console output from your Jenkins Dashboard**
+
+10. **Now go to your DockerHub and verify that the image is pushed into your DockerHub registery**
+
+11. **Running the money authenticator app using docker**
+
+
 
 
 

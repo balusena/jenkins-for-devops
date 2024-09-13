@@ -35,4 +35,23 @@
 ## 4.Add Jenkins user to docker and integrate Jenkins and Docker for CI/CD using GitHub, Jenkins, Docker
 
 
+## 2.Jenkins First Freestyle Project
+
+1. **Creating First Jenkins Job Using `hello.py` (Freestyle Project)**
+    - **Step 1: Configure `sudoers` File**
+       - **Open the `sudoers` file for editing**
+       - **Add the following line after all other lines in the sudoers file**
+    - **Step 2: Create Python File (hello.py) on the Linux Machine**
+       - **Navigate to the desired directory**
+       - **If the directory doesn't exist, create it**
+       - **Create a Python file**
+       - **Add the following content to the hello.py file**
+       - **Run the Python file to verify**
+    - **Step 3: Create a Jenkins Job**
+    - **Step 4: Build the Job**
+    - **Step 5: View Console Output**
+    - **Step 6: Deleting the Jenkins Job**
+
+
+
 

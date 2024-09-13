@@ -138,6 +138,36 @@
 5. **To create a folder Credential**
 
 
+## 5.Jenkins Basics of Jenkinsfile
+
+1. **What is Jenkinsfile?**
+
+2. **Key Features of Jenkinsfile**
+    - **Declarative Syntax**
+    - **Scripted Syntax**
+    - **Version Control**
+
+3. **Basics of Jenkinsfile**
+    - **Pipeline Syntax**
+       - **Scripted Pipeline**
+          - **Example**
+       - **Declarative Pipeline**
+          - **Example**
+    - **Required Fields of Jenkinsfile**
+       - **pipeline**
+       - **agent** 
+       - **stages**
+       - **stage and steps** 
+    - **Jenkinsfile Example (Basic Stages)**
+       - **Example of a Jenkinsfile that includes several stages for building a simple pipeline**
+    - **Jenkinsfile Example (Build with Checkout and Execution)**
+    - **Example includes Git checkout, build, and testing stages**
+    - **Testing Changes in a Jenkinsfile (Replay Feature)**
+       - **Replay Steps**
+    - **Example Replay Script**
+    - **Restart from Stage**
+       - **Steps to Restart from a Stage**
+
 
 
 

@@ -32,7 +32,7 @@
        - **To stop the Jenkins-Server**
        - **To start the Jenkins-Server:**
 
-## 4.Add Jenkins user to docker and integrate Jenkins and Docker for CI/CD using GitHub,Jenkins,Docker
+## 4.Add Jenkins user to docker and integrate Jenkins and Docker for CI/CD using GitHub, Jenkins, Docker
 
 
 
